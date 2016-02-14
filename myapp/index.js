@@ -8,11 +8,23 @@ app.use(bodyParser.urlencoded({            //此项必须在 bodyParser.json 下
   extended: true
 }));
 
-app.get('/', function (req, res) {
+app.get('/testGet', function (req, res) {
+	console.log("body:"+JSON.stringify(req.body));
   var result=new Object();
   result.code=1;
   result.msg="呵呵";
   result.time=new Date();
+  result.postinfo=JSON.stringify(req.body);
+  res.json(result);
+});
+
+app.post('/testPost', function (req, res) {
+	console.log("body:"+JSON.stringify(req.body));
+  var result=new Object();
+  result.code=1;
+  result.msg="呵呵";
+  result.time=new Date();
+  result.postinfo=JSON.stringify(req.body);
   res.json(result);
 });
 
